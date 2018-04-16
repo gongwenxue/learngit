@@ -1,0 +1,28 @@
+﻿------------git 安装并配置用户名和邮箱来表示自己主机--------
+git config --global user.name "Your Name" //配置用户名
+git config --global user.email "email@example.com" //配置邮箱
+
+
+--------git 管理文件/目录--------
+git init  //将某个文件目录变成git仓库目录(即内部多了一个.git文件夹)
+git status //查看git修改状态
+git add readme.txt //添加到git中管理
+git commit -m "备注说明信息" //添加提交
+git diff readme.txt  //查看当前版本修改变动的部分(对比)
+ls -ah //查看仓库中文件列表
+
+git log //查看git 操作(crud)日志历史记录
+git log --pretty=oneline //日志简单查看
+
+-----------回退/前进到指定的版本号-------------
+git reset --hard head^ //会到上一个版本
+git reset --hard head^^ //回退到上上个版本
+git reset -- hard head~100 //回退到上100个版本
+git reset -- hard d326e  //回退/前进到指定的版本号(d326e是某个commit id,该id表示未来或过去某次修改提交的id)
+git reflog //查看历次回退操作的commit id 日志记录(多用于重返未来时找寻未来某个commit id)
+git checkout -- readme.txt //放弃本次修改,回到服务器或暂存区的版本状态(即撤销不提交)
+-------------git工作区/暂存区/master主分支 分支----------
+git仓库目录(除.git目录外)下表示工作区,所有文件在此添加 .git目录表示暂存区(索引),git自动创建一个分支叫主分支master 以及一个指向他的指针head.暂存区/master/head都属于版本库
+git add把文件添加进去，实际上就是把文件修改添加到暂存区；git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支,
+简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改.每次修改，如果不add到暂存区，那就不会加入到commit中
+
